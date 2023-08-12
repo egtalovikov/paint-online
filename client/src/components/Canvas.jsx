@@ -7,6 +7,7 @@ import Brush from "../tools/Brush";
 import {Button, Modal} from "react-bootstrap";
 import {useParams} from "react-router-dom"
 import Rect from "../tools/Rect";
+import axios from 'axios'
 
 const Canvas = observer(() => {
     const canvasRef = useRef()
@@ -65,6 +66,8 @@ const Canvas = observer(() => {
 
     const mouseDownHandler = () => {
         canvasState.pushToUndo(canvasRef.current.toDataURL())
+        axios.post(`http://localhost:5001/image?id=${params.id}`, {img: canvasRef.current.toDataURL()})
+            .then(response => console.log(response.data))
     }
 
     const connectHandler = () => {
