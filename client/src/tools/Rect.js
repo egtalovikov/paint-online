@@ -19,9 +19,10 @@ export default class Rect extends Tool {
             id: this.id,
             figure: {
                 type: 'rect',
-                x: e.pageX - e.target.offsetLeft,
-                y: e.pageY - e.target.offsetTop,
-
+                x: this.startX,
+                y: this.startY,
+                width: this.width,
+                height: this.height
             }
         }))
     }
@@ -36,9 +37,9 @@ export default class Rect extends Tool {
         if (this.mouseDown) {
             let currentX = e.pageX - e.target.offsetLeft;
             let currentY = e.pageY - e.target.offsetTop;
-            let width = currentX - this.startX;
-            let height = currentY - this.startY;
-            this.draw(this.startX, this.startY, width, height)
+            this.width = currentX - this.startX;
+            this.height = currentY - this.startY;
+            this.draw(this.startX, this.startY, this.width, this.height)
         }
     }
 
@@ -54,4 +55,11 @@ export default class Rect extends Tool {
             this.ctx.stroke()
         }
     }
+
+    static staticDraw(ctx, x, y, w, h) {
+        ctx.beginPath()
+        ctx.rect(x, y, w, h)
+        ctx.fill()
+        ctx.stroke()
+        }
 }
