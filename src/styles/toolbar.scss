@@ -35,6 +35,7 @@
     background: url("../assets/img/line.png") no-repeat center center;
   }
   .undo {
+    margin-left: auto;
     background: url("../assets/img/undo.png") no-repeat center center;
   }
   .redo {
@@ -42,6 +43,7 @@
   }
   .save {
     background: url("../assets/img/save.png") no-repeat center center;
+    margin-right: 10px;
   }
 }
 
