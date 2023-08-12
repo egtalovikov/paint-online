@@ -18,6 +18,8 @@ const Canvas = observer(() => {
 
     useEffect(() => {
         canvasState.setCanvas(canvasRef.current)
+        axios.get(`http://localhost:5001/image?id=${params.id}`)
+            .then(response => )
     }, []);
 
     useEffect(() => {
