@@ -9,7 +9,7 @@ export default class Tool {
         this.ctx.fillStyle = color
     }
     set strokeColor(color) {
-        this.ctx.fillStyle = color
+        this.ctx.strokeStyle = color
     }
 
     set lineWidth(width) {
