@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import "../styles/canvas.scss"
 import {observer} from "mobx-react-lite";
 import canvasState from "../store/canvasState";
@@ -8,6 +8,8 @@ import {Button, Modal} from "react-bootstrap";
 
 const Canvas = observer(() => {
     const canvasRef = useRef()
+    const usernameRef = useRef()
+    const [modal, setModal] = useState(true)
 
     useEffect(() => {
         canvasState.setCanvas(canvasRef.current)
@@ -19,17 +21,18 @@ const Canvas = observer(() => {
     }
 
     const connectHandler = () => {
-
+        canvasState.setUsername(usernameRef.current.value)
+        setModal(false)
     }
 
     return (
         <div className="canvas">
-            <Modal show={true} onHide={() => {}}>
+            <Modal show={modal} onHide={() => {}}>
                 <Modal.Header closeButton>
                     <Modal.Title>Введите ваше имя</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <input type="text"/>
+                    <input type="text" ref={usernameRef}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => connectHandler()}>
