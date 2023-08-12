@@ -22,6 +22,8 @@ const Canvas = observer(() => {
     useEffect(() => {
         if (canvasState.username) {
             const socket = new WebSocket(`ws://localhost:5001/`)
+            canvasState.setSocket(socket)
+            canvasState.setSessionId(params.id)
             socket.onopen = () => {
                 console.log('Подключение установлено')
                 socket.send(JSON.stringify({

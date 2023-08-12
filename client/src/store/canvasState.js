@@ -2,6 +2,8 @@ import {makeAutoObservable} from "mobx";
 
 class CanvasState {
     canvas = null
+    socket = null
+    sessionid = null
     undoList = []
     redoList = []
     username = ""
@@ -9,8 +11,14 @@ class CanvasState {
         makeAutoObservable(this)
     }
 
+    setSessionId(id) {
+        this.sessionid = id
+    }
     setUsername(username) {
         this.username = username
+    }
+    setSocket(socket) {
+        this.socket = socket
     }
 
     setCanvas(canvas) {
