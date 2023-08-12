@@ -18,19 +18,22 @@ const Canvas = observer(() => {
         canvasState.pushToUndo(canvasRef.current.toDataURL())
     }
 
+    const connectHandler = () => {
+
+    }
+
     return (
         <div className="canvas">
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={true} onHide={() => {}}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Введите ваше имя</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+                    <input type="text"/>
+                </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                    <Button variant="secondary" onClick={() => connectHandler()}>
+                        Войти
                     </Button>
                 </Modal.Footer>
             </Modal>
