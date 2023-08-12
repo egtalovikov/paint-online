@@ -33,7 +33,7 @@ const Canvas = observer(() => {
                 }))
             }
             socket.onmessage = (event) => {
-                console.log(event.data)
+                let msg = JSON.parse(event.data)
             }
         }
     }, [canvasState.username]);

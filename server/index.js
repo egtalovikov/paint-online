@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 5001
 
 app.ws('/', (ws, req) => {
     console.log('ПОДКЛЮЧЕНИЕ УСТАНОВЛЕНО')
-    ws.send('Ты успешно подключился')
     ws.on('message', (msg) => {
         msg = JSON.parse(msg)
         switch (msg.method) {
